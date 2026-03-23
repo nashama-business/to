@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة المهام الذكية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- PWA Setup -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#09090b">
+    <link rel="apple-touch-icon" href="./icon.svg">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Custom Modal Overlay -->
+    <div id="custom-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3 id="modal-title">العنوان</h3>
+            <p id="modal-desc" class="hidden">الوصف</p>
+            <input type="text" id="modal-input" class="edit-input hidden" placeholder="..." autocomplete="off">
+            <div class="modal-actions">
+                <button id="modal-cancel" class="btn-cancel">إلغاء</button>
+                <button id="modal-confirm" class="btn-confirm">تأكيد</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container glass-panel">
+        <div class="input-section">
+            <form id="todo-form">
+                <div class="input-group">
+                    <input type="text" id="todo-input" placeholder="ماذا تريد أن تنجز اليوم؟ (اضغط '/' للكتابة)" autocomplete="off">
+                    <button type="submit" class="btn-add" id="add-btn">
+                        <i class="fa-solid fa-plus"></i> إضافة
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="categories-section">
+            <div id="dynamic-categories" class="dynamic-categories">
+                <!-- Categories injected here -->
+            </div>
+            <button id="add-category-btn" class="add-cat-btn" title="إضافة فئة جديدة"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <div class="progress-wrapper hidden" id="progress-wrapper">
+            <div class="progress-header">
+                <span class="progress-label">مستوى الإنجاز</span>
+                <strong class="progress-percent" id="progress-percent">0%</strong>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="todo-container">
+            <ul id="todo-list" class="todo-list">
+                <!-- Data will be injected here via JS -->
+            </ul>
+            
+            <div id="empty-state" class="empty-state hidden">
+                <div class="empty-icon"><i class="fa-regular fa-face-smile-wink"></i></div>
+                <p>ليس لديك مهام حالياً. استمتع بيومك أو أضف مهمة جديدة!</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="stats">
+                <span>إجمالي المهام: <strong id="total-tasks">0</strong></span>
+                <span>المكتملة: <strong id="completed-tasks">0</strong></span>
+            </div>
+            <button id="clear-all" class="btn-clear"><i class="fa-solid fa-trash-can"></i> مسح الكل</button>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
